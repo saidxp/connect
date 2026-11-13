@@ -66,6 +66,7 @@ table ip nat {
 }
 
 table inet filter {
+
   chain forward {
     type filter hook forward priority 0; policy drop;
 
@@ -82,8 +83,8 @@ table inet filter {
     # between the subnets: one service, SSH from A to B
     iifname "enp0s8" oifname "enp0s9" tcp dport 22 accept
   }
+  
 }
 EOF
-
 systemctl enable nftables
 systemctl restart nftables
